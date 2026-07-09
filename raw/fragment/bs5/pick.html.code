@@ -1,0 +1,3 @@
+<select class="form-control" data-pick="three">
+<div data-checkbox="cb" data-pick="one,two">
+<div data-radio="rb" data-pick="four">

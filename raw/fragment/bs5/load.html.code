@@ -1,7 +1,10 @@
 <head>
-  <!-- load Bootstrap5 and jQuery libraries -->
-  <script src="form-changes.js"></script>
-  <link href="form-changes.css" rel="stylesheet" />
+  <!-- load Bootstrap5 and jQuery libraries yourself-->
+
+  <!-- load the form-changes plugin -->
+  <script src="/assets/js/form-changes.js"></script>
+  <link href="/assets/css/form-changes.css" rel="stylesheet" />
+
   <script>
     $(document).ready(function() {
       $("FORM#my_form").changes({style: 'pill'});

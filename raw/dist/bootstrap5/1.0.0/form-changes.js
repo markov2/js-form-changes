@@ -347,7 +347,7 @@ class FormChanges {
 			// may still pickup some implicit things, continue
 		}
 		this.#data_version = version;
-		this.#style = options.style || form.attr('data-change-style') || 'pill';
+		this.#style = options.style || form.data('change-style') || 'pill';
 
 		this.#pick_values();
 		this.#remove_expired_notes();

@@ -12,11 +12,12 @@ foreach my $set (qw/dist assets/)
 {	system "cp -a raw/$set/ public_html/";
 }
 
-insert_fragments
-	from => 'raw/index.raw',
-	to   => 'public_html/index.html',
-	;
-
+foreach my $page (qw/index bootstrap5/)
+{	insert_fragments
+		from => "raw/$page.raw",
+		to   => "public_html/$page.html",
+		;
+}
 
 exit 0;
 
