@@ -11,7 +11,7 @@
 
 #fragment/navbar.html
 
-  <h1 name="intro">Forms with change history</h1>
+  <h1><a name="intro">Forms with change history</a></h1>
 
   <ul>
   <li><a href="bootstrap5.html">The Bootstrap5 implementation.</a></li>
@@ -25,7 +25,7 @@
   expectations of the latest form.  People will need to get used to this
   extra visual help.</p>
 
-  <h2 name="ratio">Rationale</h2>
+  <h2><a name="ratio">Rationale</a></h2>
 
   <p>Immediately after a form gets implemented, it enters the
   "maintenance" phase: every once-in-a-while, the form needs to get
@@ -48,7 +48,7 @@
   communicate them clearly to a user?  This based on the knowledge: when
   did the user visit the form last?</p>
 
-  <h2 name="recording">Recording changes</h2>
+  <h2><a name="recording">Recording changes</a></h2>
 
   <p>The key idea behind this plugin, is that the form developer records
   the changes which were made to the form fields.  Based on the knowledge
@@ -61,7 +61,7 @@
   is loaded, it is informed about the version of the form when the user clicked
   "Save" last.  All the form changes since that moment will get visualized.</p>
 
-  <h2 name="version">Form and data version</h2>
+  <h2><a name="version">Form and data version</a></h2>
 
   <p>To be able to see the changes, you need to track the version of the form
   which the user filled-in.  This is not the version of the form on the moment
@@ -81,7 +81,7 @@
   <p>Translate this to your own server language and web-framework.  (I will include
   your solutions as examples, if you contribute them.)</p>
 
-  <h2 name="future">Future developments</h2>
+  <h2><a name="future">Future developments</a></h2>
 
   <ul>
   <li>porting the features to other web frameworks than Bootstrap5.</li>

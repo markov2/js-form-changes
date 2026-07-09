@@ -22,7 +22,7 @@
 
 #fragment/navbar.html
 
-  <h1 name="bootstrap5">Bootstrap5 implementation</h1>
+  <h1><a name="bootstrap5">Bootstrap5 implementation</a></h1>
 
   <p>This page demonstrates the features of this plugin, tested with
   Bootstrap 5.3.8 and jQuery 3.7.1.  Very probably, this implementation
@@ -37,7 +37,7 @@
   <li>dark mode.</li>
   </ul>
 
-  <h2 name="plugin">Starting the "form-changes" plugin</h2>
+  <h2><a name="plugin">Starting the "form-changes" plugin</a></h2>
 
   <p>Besides the two extra hidden fields in your form to handle versions
   (<a href="/index.html#version">learn about form versions</a>), you also
@@ -56,7 +56,7 @@
   a configuration.  You may use different configurations for different forms
   on your page.  Currently, the only support option is <tt>style</tt>.</p>
 
-  <h2 name="styles">Display styles</h2>
+  <h2><a name="styles">Display styles</a></h2>
 
   <p>Based on the same basic change specification, you can select different
   visualization styles.  Specify the <tt>style</tt> at configuration, which
@@ -67,7 +67,7 @@
   style <tt>dot</tt>, which attempts to be helpful with less visual and
   logical load.  The examples below demonstrate the differences.</p>
 
-  <h2 name="history">Change history template</h2>
+  <h2><a name="history">Change history template</a></h2>
 
   <p>Form change information can be added to every kind of form field, and
   as special change notes.  First a generic example:</p>
@@ -89,7 +89,7 @@
   change describing block somewhere else in the HTML file: as long as it is part
   of the same <tt>form</tt> structure.</p>
 
-  <h2 name="pick">Pick values</h2>
+  <h2><a name="pick">Pick values</a></h2>
 
   <p>How do you fill in the previously submitter data into your form.  It
   is straight forward for most input fields, like text input and textarea.
@@ -103,12 +103,12 @@
   Convenient.  Using '<tt>data-pick</tt>', the plugin can give the
   revisiting user a bit more help as well.</p>
 
-  <h2 name="viz">Visualizations</h2>
+  <h2><a name="viz">Visualizations</a></h2>
 
   <p>Based on the applicable change blocks, visualizations are produced.  The
   block either describes a mark, a note, or a form field.</p>
 
-  <h3 name="notes">Change notes</h3>
+  <h3><a name="notes">Change notes</a></h3>
 
   <p>HTML blocks (usually <tt>fieldset</tt> blocks) which are marked
   with class '<tt>change-note</tt>' are shown when the user's data
@@ -155,7 +155,7 @@
   <p>Besides '<tt>change-info</tt>' (blue), you can also use '<tt>change-success</tt>' (green),
   '<tt>change-danger</tt>' (read), and '<tt>change-warning</tt>' (yellow).</p>
 
-  <h3 name="new">Field got added, '<tt>change-new</tt>'</h3>
+  <h3><a name="new">Field got added, '<tt>change-new</tt>'</a></h3>
 
   <p>Mainly used on INPUT and TEXTAREA element, but may appear with
   other elements as well.  The visualization depends a bit on
@@ -209,7 +209,7 @@
   <p>When you change the content of a field, the mark will be
   removed.</p>
 
-  <h3 name="req">Field became required, '<tt>change-req</tt>'</h3>
+  <h3><a name="req">Field became required, '<tt>change-req</tt>'</a></h3>
 
   <p>This change explains that an optional input field became
   required.  When the field already has a value, you'll see
@@ -255,7 +255,7 @@
   <p>When you change the content of a field, the mark will be
   removed.</p>
 
-  <h3 name="autoreq">Field is required, but no change description</h3>
+  <h3><a name="autoreq">Field is required, but no change description</a></h3>
 
   <p>When the "change-req" information is missing, or when the form
   is empty (fresh), then empty required fields will get marked anyway.</p>
@@ -298,7 +298,7 @@
 
   <p>When you add content to the field, the mark will be removed.</p>
 
-  <h3 name="sel">Options changed for select, '<tt>change-sel</tt>'</h3>
+  <h3><a name="sel">Options changed for select, '<tt>change-sel</tt>'</a></h3>
 
   <p>When a SELECT relates to a block with <tt>change-set</tt>, then
   that's used as additional information about the changed options.
@@ -361,7 +361,7 @@
   <p>The markings disappear when you move away from the select box,
   to indicate that you have noticed the change.</p>
 
-  <h3 name="cb">Checkboxes</h3>
+  <h3><a name="cb">Checkboxes</a></h3>
 
   <p>Checkbox lists are pretty verbose in Bootstrap's HTML.  They are
   losely connected by their name.  This plugin requires a wrapping
@@ -458,7 +458,7 @@
   </div>
 </div>
 
-  <h3 name="rb">Radio buttons</h3>
+  <h3><a name="rb">Radio buttons</a></h3>
 
   <p>Radio button lists are pretty verbose in Bootstrap's HTML.  They are
   strongly connected by their name.  This plugin requires a wrapping
