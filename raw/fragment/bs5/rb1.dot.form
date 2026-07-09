@@ -1,0 +1,30 @@
+<p>The "dot" style uses the same icons as the "pill" style here, because they are very
+explanatory.  In the future, a more lightweight display may be introduced.  New options
+are not marked.</p>
+
+<div id="rb_block" data-radio="rb" data-pick="two">
+  <label for="rb_block" class="form-label">Prefered start position:</label>
+  <div class="form-check">
+     <input class="form-check-input" type="radio" name="rb" value="one" id="rb_one" disabled>
+     <label class="form-check-label" for="rb_one">One (disabled)</label>
+  </div>
+  <div class="form-check" data-removed-in="20240101">
+     <input class="form-check-input" type="radio" name="rb" value="two" id="rb_two">
+     <label class="form-check-label" for="rb_two">Two (pick, removed)</label>
+  </div>
+  <div class="form-check">
+     <input class="form-check-input" type="radio" name="rb" value="three" id="rb_three">
+     <label class="form-check-label" for="rb_three">Three</label>
+  </div>
+  <div class="form-check" data-removed-in="20240101">
+     <input class="form-check-input" type="radio" name="rb" value="four" id="rb_four">
+     <label class="form-check-label" for="rb_four">Four (removed)</label>
+  </div>
+  <div class="form-check" data-added-in="20251010">
+     <input class="form-check-input" type="radio" name="rb" value="five" id="rb_five">
+     <label class="form-check-label" for="rb_five">Five (added)</label>
+  </div>
+  <div class="change change-rb" for="rb_block" data-changed-in="20251010">
+    Picked option "Two" has been removed.
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<p>When the field has no value yet, then a red dot is shown.
+The <tt>summary</tt> is never shown.</p>
+
+<div>
+  <label for="email" class="form-label">Email address</label>
+  <input type="email" class="form-control"
+      id="email" required
+      aria-describedby="email-descr" />
+  <div id="email-descr" class="form-text">
+    Provide your email address.
+  </div>
+  <div class="change change-req" for="email"
+      data-changed-in="20251010"
+      data-summary="marketing">
+    The marketing department will contact you.
+  </div>
+</div>

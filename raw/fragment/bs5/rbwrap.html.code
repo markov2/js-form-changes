@@ -1,0 +1,7 @@
+<div id="$id" data-radio="$name" data-pick="two">
+  <label for="$id" class="form-label">Prefered start position:</label>
+  <!-- radio options list -->
+  <div class="change change-rb" for="$id" data-changed-in="20251010">
+    Picked option "Two" has been removed.
+  </div>
+</div>

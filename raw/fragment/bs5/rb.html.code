@@ -1,0 +1,27 @@
+<div id="rb_block" data-radio="rb" data-pick="two">
+  <label for="rb_block" class="form-label">Prefered start position:</label>
+  <div class="form-check">
+     <input name="rb" value="one" id="rb_one" disabled>
+     <label for="rb_one">One (disabled)</label>
+  </div>
+  <div class="form-check" data-removed-in="20240101">
+     <input name="rb" value="two" id="rb_two">
+     <label for="rb_two">Two (pick, removed)</label>
+  </div>
+  <div class="form-check">
+     <input name="rb" value="three" id="rb_three">
+     <label for="rb_three">Three</label>
+  </div>
+  <div class="form-check" data-removed-in="20240101">
+     <input name="rb" value="four" id="rb_four">
+     <label for="rb_four">Four (removed)</label>
+  </div>
+  <div class="form-check" data-added-in="20251010">
+     <input type="radio" name="rb" value="five" id="rb_five">
+     <label for="rb_five">Five (added)</label>
+  </div>
+  <div class="change change-rb" for="rb_block" data-changed-in="20251010">
+    Picked option "Two" has been removed.
+  </div>
+</div>
+

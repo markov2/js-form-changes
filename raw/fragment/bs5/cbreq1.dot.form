@@ -1,0 +1,10 @@
+<p>The mark disappears when the checkbox is clicked.  No mark will not appear when
+the checkbox is already set.</p>
+
+<div>
+  <label for="cb_read" class="form-label">Licenses:</label>
+  <div class="form-check" data-added-in="20251010">
+    <input class="form-check-input" type="checkbox" name="read" value="read" id="cb_read" required>
+    <label class="form-check-label" for="rb_read">Please confirm you read the conditions.</label>
+  </div>
+</div>

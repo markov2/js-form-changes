@@ -1,0 +1,5 @@
+<form action="/submit.cgi" id="my-form">
+  <input type="hidden" id="form-version" name="version" value="20260616" />
+  <input type="hidden" id="data-version" value="20240101" />
+  ...
+</form>

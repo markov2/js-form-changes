@@ -1,0 +1,12 @@
+<div>
+  <label for="address" class="form-label">Home address</label>
+  <input type="text" class="form-control" id="address"
+      aria-describedby="address-descr" />
+  <div id="address-descr" class="form-text">
+    The address where your are personally registered to live.
+  </div>
+  <div class="change change-req" for="address"
+      data-changed-in="20251010" data-summary="became required">
+    New law requires that we know your residential address.
+  </div>
+</div>

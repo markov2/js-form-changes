@@ -1,0 +1,7 @@
+<div id="$id" data-checkbox="$name" data-pick="one,two">
+  <label for="$id" class="form-label">Pick some numbers</label>
+  <!-- checkbox list -->
+  <div class="change change-cb" for="$id" data-changed-in="20251010">
+    Describes the changes in the checkbox list.
+  </div>
+</div>

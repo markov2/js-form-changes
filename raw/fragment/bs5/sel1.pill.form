@@ -1,0 +1,25 @@
+<p>When the old choice is not available anymore, then a red "?" is
+shown.  New options lead to a green "+".</p>
+
+<div>
+  <form action="#" id="sel-pill" class="demo demo-pill">
+  <input type="hidden" id="form-version" name="version" value="20260616">
+  <input type="hidden" id="data-version" value="20240101">
+  <label for="bedrooms" class="form-label">Desired bedrooms</label>
+  <select class="form-control" id="bedrooms" data-pick="three"
+      aria-describedby="bedrooms-descr">
+  <option disabled>one
+  <option>two
+  <option data-removed-in="20251010">three
+  <option data-added-in="20251010">four
+  <option data-removed-in="20240101">five
+  <option>six
+  </select>
+  <div id="bedrooms-descr" class="form-text">
+    How many bedrooms do you need in your new house?
+  </div>
+  <div class="change change-sel" for="bedrooms" data-changed-in="20251010">
+    All three and five bedroom apartments have been converted into four bedrooms dwellings.
+  </div>
+  </form>
+</div>

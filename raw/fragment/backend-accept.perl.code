@@ -1,0 +1,5 @@
+sub accept_form($form) {
+   my %data;  # ... validate and collect fields
+   $data{version} = $form->{version};
+   $database->save($user, \%data);
+}

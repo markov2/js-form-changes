@@ -1,0 +1,12 @@
+<div>
+  <label for="animal" class="form-label">favorit animal</label>
+  <input type="text" class="form-control" id="animal"
+      aria-describedby="animal-descr" />
+  <div id="animal-descr" class="form-text">
+    Specify the endangered spieces you want to support.
+  </div>
+  <div class="change change-new" for="animal"
+      data-changed-in="20251010" data-summary="add pet">
+    Your favorit animal will get an extra meal.
+  </div>
+</div>

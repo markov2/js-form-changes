@@ -1,0 +1,39 @@
+<div id="cb_block" data-checkbox="cb" data-pick="one,two,four,five">
+  <label for="cb_block" class="form-label">Pick some numbers</label>
+  <div class="form-check">
+    <input name="cb" value="one" id="cb_one">
+    <label for="cb_one">One (picked)</label>
+  </div>
+  <div class="form-check">
+    <input name="cb" value="two" id="cb_two">
+    <label for="cb_two">Two (picked)</label>
+  </div>
+  <div class="form-check">
+    <input name="cb" value="three" id="cb_three">
+    <label for="cb_three">Three (not picked)</label>
+  </div>
+  <div class="form-check">
+    <input name="cb" value="four" id="cb_four" disabled>
+    <label for="cb_four">Four (picked, disabled)</label>
+  </div>
+  <div class="form-check" data-removed-in="20240101">
+    <input name="cb" value="five" id="cb_five">
+    <label for="cb_five">Five (removed, picked)</label>
+  </div>
+  <div class="form-check" data-removed-in="20240101">
+    <input name="cb" value="six" id="cb_six">
+    <label for="cb_six">Six (removed, not picked)</label>
+  </div>
+  <div class="form-check" data-added-in="20251010">
+    <input name="cb" value="seven" id="cb_seven">
+    <label for="cb_seven">Seven (added)</label>
+  </div>
+  <div class="form-check" data-added-in="20251010">
+    <input name="cb" value="eight" id="cb_eight" required>
+    <label for="cb_eight">Eight (added, required)</label>
+  </div>
+  <div class="change change-cb" for="cb_block"
+      data-changed-in="20251010">
+    Some numbers, and some were removed.
+  </div>
+</div>

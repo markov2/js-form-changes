@@ -1,0 +1,9 @@
+<div>
+  <label for="nickname" class="form-label">Nickname</label>
+  <input type="text" class="form-control"
+      id="nickname" required
+      aria-describedby="nickname-descr" />
+  <div id="nickname-descr" class="form-text">
+    The name other people see.
+  </div>
+</div>

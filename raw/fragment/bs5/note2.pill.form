@@ -1,0 +1,7 @@
+<div>
+  <fieldset class="change-note change-info" data-changed-in="20251010">
+    <legend>Info block</legend>
+    This text provides some information about changes, this without '<tt>framed</tt>'
+    and '<tt>dismissable</tt>'.
+  </fieldset>
+</div>

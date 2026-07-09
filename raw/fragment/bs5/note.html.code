@@ -1,0 +1,5 @@
+<fieldset data-changed-in="20251010"
+  class="change-note change-info framed dismissable">
+  <legend>Info block</legend>
+  This text provides some information about changes.
+</fieldset>

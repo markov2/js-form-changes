@@ -1,0 +1,56 @@
+#!/usr/bin/env perl
+
+use warnings;
+use strict;
+
+use File::Slurper     qw/read_text write_text/;
+use HTML::Entities    qw/encode_entities/;
+
+sub insert_fragments(%);
+
+foreach my $set (qw/dist assets/)
+{	system "cp -a raw/$set/ public_html/";
+}
+
+insert_fragments
+	from => 'raw/index.raw',
+	to   => 'public_html/index.html',
+	;
+
+
+exit 0;
+
+### HELPERS
+
+sub _expand_fragment($)
+{	my $line = shift;
+	my ($frag, @options) = split ' ', $line;
+
+	my $text = read_text "raw/$frag";
+
+	if($frag =~ /\.(html|perl)\.code$/)
+	{	return '<pre><code class="snippet language-' . $1 . '">'
+			 . encode_entities($text)
+			 . '</code></pre>';
+	}
+	elsif($frag =~ /(.*)\.(pill|dot)\.form$/)
+	{	return qq{<form action="#" id="$1-$2" class="demo demo-$2">\n}
+             . qq{  <input type="hidden" id="form-version" name="version" value="20260616">\n}
+         	 . qq{  <input type="hidden" id="data-version" value="20240101">\n}
+         	 . qq{  <div class="example">\n}
+			 . $text
+         	 . qq{  </div>\n}
+			 . qq{</form>\n};
+	}
+
+	$text;
+}
+
+sub insert_fragments(%)
+{	my %args = @_;
+	my $html = read_text $args{from};
+
+	$html =~ s/^\#\s*(fragment[^\n]*)/_expand_fragment($1)/gme;
+
+	write_text $args{to}, $html;
+}

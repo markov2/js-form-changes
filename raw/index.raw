@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Bootstrap 5.3 examples</title>
+
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- syntax highlighting.  Includes defaults + perl -->
+  <link href="assets/prism.css" rel="stylesheet" />
+  <script src="assets/prism.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+    integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="dist/bootstrap5.3/1.0.0/form-changes.css" />
+  <style>
+	BODY {
+		padding-left: 100px;
+		padding-right: 100px;
+		counter-reset: h2;
+	}
+	CODE.snippet, tt {
+		font-size: 0.875em;
+	}
+	H2::before {
+		counter-increment: h2;
+		content: counter(h2) '. ';
+	}
+	FORM.demo DIV.example > DIV {
+		padding: 10px 20px;
+		border: 1px solid black;
+	}
+	FORM.demo DIV.example > P {
+		padding: 2px 10px;
+		margin: 3px 0 5px 0;
+		background-color: #f5f2f0;
+	}
+  </style>
+
+  <script src="dist/bootstrap5.3/1.0.0/form-changes.js"></script>
+  <script>
+	$(document).ready(function() {
+		$("FORM.demo-pill").changes({style: 'pill'});
+		$("FORM.demo-dot").changes({style: 'dot'});
+	});
+  </script>
+
+</head>
+<body>
+
+  <h1>Forms with change history</h1>
+
+  <h2>Rationale</h2>
+
+  <p>Immediately after a form gets implemented, it enters the
+  "maintenance" phase: every once-in-a-while, the form needs to get
+  updated.  Adding fields, removing fields, changing fields.  In common
+  practice, the users of the form is not informed about those changes.
+  However, that may not be the optimal experience, both from the form
+  owner and from the form user's perspective.</p>
+
+  <p>A few examples where it would really help to display the changes
+  since the last visit of the user:</p>
+  <ul>
+  <li>the user gets a new option to indicate whether the phone number is for home or work,
+  <li>the accepted length of the company description has been enlarged,
+  <li>the license has to be reconfirmed,
+  <li>a new gender option was added which may fit you better, or
+  <li>the postal address became optional: you are allowed to remove it.
+  </ul>
+
+  <p>Over time, small changes to the form are made.  How do you
+  communicate them clearly to a user?  This based on the knowledge: when
+  did the user visit the form last?</p>
+
+  <h3>Compatibility</h3>
+
+  <p>This page demonstrates the features of this module, tested with
+  Bootstrap 5.3.8 and jQuery 3.7.1.  Very probably, this doe will also
+  work with older or newer releases of Bootstrap and Bootstrap: please
+  report your successes.</p>
+
+  <h3>Future developments</h3>
+
+  <ul>
+  <li>integration with the validation component.</li>
+  <li>porting the features to other web frameworks.</li>
+  </ul>
+
+  <h2>Concepts</h2>
+
+  <p>The form change record is added to the HTML in divs.  What has changed
+  and when is encoded in class attributes and data attributes.  When the form
+  is loaded, it is informed about the version of the form when the user clicked
+  "Save" last.  All the form changes since that moment will get visualized.</p>
+
+  <h3>Form and data version</h3>
+
+  <p>To be able to see the changes, you need to track the version of the form
+  which the user filled-in.  This is not the version of the form on the moment
+  the user submits, but the version the user saw in the browser.  Typically, your
+  form starts like this:</p>
+
+#fragment/form-version.html.code
+
+  <p>The version <strong>MUST be strictly alphabetically ordered</strong>.  A date
+  with or without time will do.  Versions like '<tt>2.8.12</tt>' will <em>not</em>
+  work.</p>
+
+  <p>When the server accepts the form data, it shall implement something like:
+
+#fragment/backend-accept.perl.code
+
+  <p>Translate this to your own server language and web-framework.  (I will include
+  your solutions as examples, if you contribute them.)</p>
+
+  <h3>Starting the "changes" plugin</h3>
+
+  <p>Besides the two extra hidden fields in your form, you also need to start the
+  jQuery plugin.  Add this to your HTML:</p>
+
+#fragment/bs5/load.html.code
+
+  <p>When you attach the <tt>changes</tt> plugin to your form, you can pass
+  a configuration.  You may use different configurations for different forms
+  on your page.  Currently, the only support option is <tt>style</tt>.</p>
+
+  <h3>Display styles</h3>
+
+  <p>Based on the same basic change specification, you can select different
+  visualization styles.  Specify the <tt>style</tt> at configuration, which
+  overrules the <tt>data-change-style</tt> attribute on the <tt>form</tt>.</p>
+
+  <p>Style <tt>pill</tt> (the default) is a pretty heavy display of
+  the change information.  The only other option (at the moment) is
+  style <tt>dot</tt>, which attempts to be helpful with less visual
+  load.  The examples below demonstrate the differences.</p>
+
+  <h3>Change history template</h3>
+
+  <p>Form change information can be added to every kind of form field, and
+  as special change notes.  First a generic example:</p>
+
+#fragment/bs5/global.html.code
+
+  <p>Above HTML example shows a typical Bootstrap text input field.
+  The <tt>&lt;div&gt;</tt> blocks tagged '<tt>change</tt>' and
+  '<tt>change-note</tt>' are the additions handled by this plugin.</p>
+
+  <p>When the user's data is older than '<tt>changed-in</tt>'
+  (here version 20251010), then the change will be made visual to the user
+  of the form.  Not shown here is the '<tt>change-hide</tt>' attribute,
+  which is used when a new change block eclipses an older version.
+  Some styles may use the '<tt>summary</tt>' for immediate display.
+  The content of the <tt>&lt;div&gt;</tt> MAY be displayed on demand.</p>
+
+  <p>As you could have guessed from the '<tt>for</tt>' attribute: you MAY put the
+  change describing block somewhere else in the HTML file: as long as it is part
+  of the same <tt>form</tt> structure.</p>
+
+  <h2>Visualizations</h2>
+
+  <p>Based on the applicable change blocks, visualizations are produced.  The
+  block either describes a note, or a form field.</p>
+
+  <h3>Change notes</h3>
+
+  <p>HTML blocks (usually <tt>fieldset</tt> blocks) which are marked
+  with class '<tt>change-note</tt>' are shown when the user's data
+  version is older than '<tt>data-changed-in</tt>' and not older than
+  '<tt>data-change-hide</tt>'.</p>
+
+  <p>When you use a <tt>fieldset</tt> block, then the additional class
+  '<tt>framed</tt>' can be used for a nice decoration.  In that case,
+  class '<tt>dismissable</tt>' can be added to get a <em>close</em>
+  symbol to click away the note.</p>
+
+  <div class="row">
+    <div class="col-6">
+
+#fragment/bs5/note.html.code
+
+    </div>
+    <div class="col-6">
+
+  <ul class="nav nav-pills" id="demo-note">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="demo-note-pill" data-bs-toggle="tab" data-bs-target="#new-pill-pane" type="button" role="tab" aria-controls="new-pill-pane">framed</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="demo-note-dot" data-bs-toggle="tab" data-bs-target="#new-dot-pane" type="button" role="tab" aria-controls="new-dot-pane">not framed</button>
+  </li>
+  </ul>
+  <div class="tab-content" id="demo-note-content">
+    <div class="tab-pane fade show active" id="new-pill-pane" role="tabpanel" aria-labelledby="demo-note-pill" tabindex="0">
+
+#fragment/bs5/note.pill.form
+
+    </div>
+    <div class="tab-pane fade" id="new-dot-pane" role="tabpanel" aria-labelledby="demo-note-dot" tabindex="0">
+
+#fragment/bs5/note2.pill.form
+
+    </div>
+  </div>
+
+  </div>
+</div>
+
+  <p>Besides '<tt>change-info</tt>' (blue), you can also use '<tt>change-success</tt>' (green),
+  '<tt>change-danger</tt>' (read), and '<tt>change-warning</tt>' (yellow).</p>
+
+  <h3>Field got added, '<tt>change-new</tt>'</h3>
+
+  <p>Mainly used on INPUT and TEXTAREA element, but may appear with
+  other elements as well.  The visualization depends a bit on
+  whether the element is required at the moment.</p>
+
+<div class="row">
+  <div class="col-6">
+
+#fragment/bs5/new.html.code
+
+  </div>
+  <div class="col-6">
+
+  <ul class="nav nav-pills" id="demo-new">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="demo-new-pill" data-bs-toggle="tab" data-bs-target="#new-pill-pane" type="button" role="tab" aria-controls="new-pill-pane">style=pill</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="demo-new-pill2" data-bs-toggle="tab" data-bs-target="#new-pill2-pane" type="button" role="tab" aria-controls="new-pill2-pane">style=pill</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="demo-new-dot" data-bs-toggle="tab" data-bs-target="#new-dot-pane" type="button" role="tab" aria-controls="new-dot-pane">style=dot</button>
+  </li>
+  </ul>
+  <div class="tab-content" id="demo-new-content">
+    <div class="tab-pane fade show active" id="new-pill-pane" role="tabpanel" aria-labelledby="demo-new-pill" tabindex="0">
+
+#fragment/bs5/new1.pill.form
+      <br>
+#fragment/bs5/new2.pill.form
+
+    </div>
+    <div class="tab-pane fade" id="new-pill2-pane" role="tabpanel" aria-labelledby="demo-new-pill2" tabindex="0">
+
+#fragment/bs5/new3.pill.form
+      <br>
+#fragment/bs5/new4.pill.form
+
+    </div>
+    <div class="tab-pane fade" id="new-dot-pane" role="tabpanel" aria-labelledby="demo-new-dot" tabindex="0">
+
+#fragment/bs5/new1.dot.form
+      <br>
+#fragment/bs5/new2.dot.form
+
+    </div>
+  </div>
+
+</div>
+
+  <p>When you change the content of a field, the mark will be
+  removed.</p>
+
+  <h3>Field became required, '<tt>change-req</tt>'</h3>
+
+  <p>This change explains that an optional input field became
+  required.  When the field already has a value, you'll see
+  no special marking.</p>
+
+<div class="row">
+  <div class="col-6">
+
+#fragment/bs5/req.html.code
+
+  </div>
+  <div class="col-6">
+
+  <ul class="nav nav-pills" id="demo-req">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="demo-req-pill" data-bs-toggle="tab" data-bs-target="#req-pill-pane" type="button" role="tab" aria-controls="req-pill-pane">style=pill</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="demo-req-dot" data-bs-toggle="tab" data-bs-target="#req-dot-pane" type="button" role="tab" aria-controls="req-dot-pane">style=dot</button>
+  </li>
+  </ul>
+  <div class="tab-content" id="demo-req-content">
+    <div class="tab-pane fade show active" id="req-pill-pane" role="tabpanel" aria-labelledby="demo-req-pill" tabindex="0">
+
+#fragment/bs5/req1.pill.form
+      <br>
+#fragment/bs5/req2.pill.form
+
+    </div>
+    <div class="tab-pane fade" id="req-dot-pane" role="tabpanel" aria-labelledby="demo-req-dot" tabindex="0">
+
+#fragment/bs5/req1.dot.form
+      <br>
+#fragment/bs5/req2.dot.form
+
+    </div>
+  </div>
+  </div>
+
+  </div>
+</div>
+
+  <p>When you change the content of a field, the mark will be
+  removed.</p>
+
+<h3>Field is required, but empty</h3>
+
+  <p>When the "change-req" information is missing, or when the form
+  is empty (fresh), then required fields will get marked anyway.
+
+<div class="row">
+  <div class="col-6">
+
+#fragment/bs5/autoreq.html.code
+
+  </div>
+  <div class="col-6">
+
+  <ul class="nav nav-pills" id="demo-auto">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="demo-auto-pill" data-bs-toggle="tab" data-bs-target="#auto-pill-pane" type="button" role="tab" aria-controls="auto-pill-pane">style=pill</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="demo-auto-dot" data-bs-toggle="tab" data-bs-target="#auto-dot-pane" type="button" role="tab" aria-controls="auto-dot-pane">style=dot</button>
+  </li>
+  </ul>
+  <div class="tab-content" id="demo-auto-content">
+    <div class="tab-pane fade show active" id="auto-pill-pane" role="tabpanel" aria-labelledby="demo-auto-pill" tabindex="0">
+
+#fragment/bs5/autoreq1.pill.form
+      <br>
+#fragment/bs5/autoreq2.pill.form
+
+    </div>
+    <div class="tab-pane fade" id="auto-dot-pane" role="tabpanel" aria-labelledby="demo-auto-dot" tabindex="0">
+
+#fragment/bs5/autoreq1.dot.form
+      <br>
+#fragment/bs5/autoreq2.dot.form
+
+    </div>
+  </div>
+
+  </div>
+</div>
+
+  <p>When you add content to the field, the mark will be removed.</p>
+
+  <h3>Options changed for select, '<tt>change-sel</tt>'</h3>
+
+  <p>When a SELECT relates to a block with <tt>change-set</tt>, then
+  that's used as additional information about the changed options.
+  However, it is already useful to have '<tt>data-removed-in</tt>' and
+  '<tt>data-added-in</tt>' attributes top options.</p>
+
+  <p>See "pick".  When the option is flagged as removed and not picked,
+  then the SELECT will not show it.  However, when it was previous
+  chosen option, then it is kept and disabled.  A new option is chosen
+  and the select is marked with a "?".</p>
+
+  <p>When you do not use "pick", then your HTML template probably found
+  another way to add <tt>selected</tt> to one OPTION.  In that case, this
+  plugin cannot warn the user about the changed value.</p>
+
+  <p>HTML and CSS offer very little styling and decoration for the OPTIONS,
+  so little smart visualization is possible.</p>
+
+<div class="row">
+  <div class="col-6">
+    <div style="max-height: 18lh; overflow-y: scroll">
+
+#fragment/bs5/sel.html.code
+
+    </div>
+  </div>
+  <div class="col-6">
+
+  <ul class="nav nav-pills" id="demo-sel">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="demo-sel-pill" data-bs-toggle="tab" data-bs-target="#sel-pill-pane" type="button" role="tab" aria-controls="sel-pill-pane">style=pill</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="demo-sel-dot" data-bs-toggle="tab" data-bs-target="#sel-dot-pane" type="button" role="tab" aria-controls="sel-dot-pane">style=dot</button>
+  </li>
+  </ul>
+  <div class="tab-content" id="demo-sel-content">
+    <div class="tab-pane fade show active" id="sel-pill-pane" role="tabpanel" aria-labelledby="demo-sel-pill" tabindex="0">
+
+#fragment/bs5/sel1.pill.form
+      <br>
+#fragment/bs5/sel2.pill.form
+
+    </div>
+  </div>
+
+  <div class="tab-content" id="demo-sel-content2">
+    <div class="tab-pane fade" id="sel-dot-pane" role="tabpanel" aria-labelledby="demo-sel-dot" tabindex="0">
+
+#fragment/bs5/sel1.dot.form
+      <br>
+#fragment/bs5/sel2.dot.form
+
+    </div>
+  </div>
+
+  </div>
+</div>
+
+  <p>The markings disappear when you move away from the select box,
+  to indicate that you have noticed the change.</p>
+
+  <h3>Checkboxes</h3>
+
+  <p>Checkbox lists are pretty verbose in Bootstrap's HTML.  They are
+  losely connected by their name.  This plugin requires a wrapping
+  container when you like to use '<tt>data-pick</tt>' or a change
+  description.  The wrapper looks like this:</p>
+
+#fragment/bs5/cbwrap.html.code
+
+  <p>To make the HTML example below easier to read, we have removed
+  '<tt>class="form-check-input" type="checkbox"</tt>' from the
+  '<tt>&lt;input&gt;</tt>' and '<tt>class="form-check-label"</tt>'
+  from each checkbox '<tt>&lt;label&gt;</tt>' in the example below.
+
+<div class="row">
+  <div class="col-6">
+    <div style="max-height: 18lh; overflow-y: scroll">
+
+#fragment/bs5/cb.html.code
+
+    </div>
+  </div>
+  <div class="col-6">
+
+  <ul class="nav nav-pills" id="demo-cb">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="demo-cb-pill" data-bs-toggle="tab" data-bs-target="#cb-pill-pane" type="button" role="tab" aria-controls="cb-pill-pane">style=pill</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="demo-cb-dot" data-bs-toggle="tab" data-bs-target="#cb-dot-pane" type="button" role="tab" aria-controls="cb-dot-pane">style=dot</button>
+  </li>
+  </ul>
+  <div class="tab-content" id="demo-cb-content">
+    <div class="tab-pane fade show active" id="cb-pill-pane" role="tabpanel" aria-labelledby="demo-cb-pill" tabindex="0">
+
+#fragment/bs5/cb1.pill.form
+
+    </div>
+  </div>
+  <div class="tab-content" id="demo-cb-content">
+    <div class="tab-pane fade" id="cb-dot-pane" role="tabpanel" aria-labelledby="demo-cb-pill" tabindex="0">
+
+#fragment/bs5/cb1.dot.form
+
+    </div>
+  </div>
+
+  </div>
+</div>
+
+  <p>Besides explicit removal as alternative, with possible explanation to the user, you can (of course) also
+  remove the checkbox row from the form.  This "changes" plugin cannot inform the user about removed picks.
+  It depends on the importants if the option which alternative is better.</p>
+
+  <p><b>Required checkboxes without wrapper</b> do work, but will not be able to provide additional
+  information to the user, as the following example shows:</p>
+
+<div class="row">
+  <div class="col-6">
+    <div style="max-height: 18lh; overflow-y: scroll">
+
+#fragment/bs5/cbreq.html.code
+
+    </div>
+  </div>
+  <div class="col-6">
+
+  <ul class="nav nav-pills" id="demo-cbreq">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="demo-cbreq-pill" data-bs-toggle="tab" data-bs-target="#cbreq-pill-pane" type="button" role="tab" aria-controls="cbreq-pill-pane">style=pill</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="demo-cbreq-dot" data-bs-toggle="tab" data-bs-target="#cbreq-dot-pane" type="button" role="tab" aria-controls="cbreq-dot-pane">style=dot</button>
+  </li>
+  </ul>
+  <div class="tab-content" id="demo-cbreq-content">
+    <div class="tab-pane fade show active" id="cbreq-pill-pane" role="tabpanel" aria-labelledby="demo-cbreq-pill" tabindex="0">
+
+#fragment/bs5/cbreq1.pill.form
+      <br>
+#fragment/bs5/cbreq2.pill.form
+
+    </div>
+  </div>
+  <div class="tab-content" id="demo-cbreq-content">
+    <div class="tab-pane fade" id="cbreq-dot-pane" role="tabpanel" aria-labelledby="demo-cbreq-pill" tabindex="0">
+
+#fragment/bs5/cbreq1.dot.form
+      <br>
+#fragment/bs5/cbreq2.dot.form
+
+    </div>
+  </div>
+
+  </div>
+</div>
+
+ <h3>Radio buttons</h3>
+
+  <p>Radio button lists are pretty verbose in Bootstrap's HTML.  They are
+  strongly connected by their name.  This plugin requires a wrapping
+  container when you like to use '<tt>data-pick</tt>' or a change
+  description.  The wrapper looks like this:</p>
+
+#fragment/bs5/rbwrap.html.code
+
+  <p>To make the HTML example below easier to read, we have removed
+  '<tt>class="form-check-input" type="radio"</tt>' from the
+  '<tt>&lt;input&gt;</tt>' and '<tt>class="form-check-label"</tt>'
+  from each checkbox '<tt>&lt;label&gt;</tt>' in the example below.
+
+<div class="row">
+  <div class="col-6">
+    <div style="max-height: 18lh; overflow-y: scroll">
+
+#fragment/bs5/rb.html.code
+
+    </div>
+  </div>
+  <div class="col-6">
+
+  <ul class="nav nav-pills" id="demo-rb">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="demo-rb-pill" data-bs-toggle="tab" data-bs-target="#rb-pill-pane" type="button" role="tab" aria-controls="rb-pill-pane">style=pill</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="demo-rb-dot" data-bs-toggle="tab" data-bs-target="#rb-dot-pane" type="button" role="tab" aria-controls="rb-dot-pane">style=dot</button>
+  </li>
+  </ul>
+  <div class="tab-content" id="demo-rb-content">
+    <div class="tab-pane fade show active" id="rb-pill-pane" role="tabpanel" aria-labelledby="demo-rb-pill" tabindex="0">
+
+#fragment/bs5/rb1.pill.form
+
+    </div>
+  </div>
+  <div class="tab-content" id="demo-rb-content">
+    <div class="tab-pane fade" id="rb-dot-pane" role="tabpanel" aria-labelledby="demo-rb-pill" tabindex="0">
+
+#fragment/bs5/rb1.dot.form
+
+    </div>
+  </div>
+
+  </div>
+</div>
+
+  <p>Besides explicit removal as alternative, with possible explanation
+  to the user, you can (of course) also remove the radio button the form.
+  This "changes" plugin cannot inform the user about the remove choice,
+  which makes it confusing.</p>
+
+</body>
+</html>
