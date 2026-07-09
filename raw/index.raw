@@ -9,13 +9,23 @@
 </head>
 <body>
 
-  <h1>Forms with change history</h1>
+#fragment/navbar.html
+
+  <h1 name="intro">Forms with change history</h1>
 
   <ul>
   <li><a href="bootstrap5.html">The Bootstrap5 implementation.</a></li>
   </ul>
 
-  <h2>Rationale</h2>
+  <p><strong>WARNING:</strong>
+  This plugin is "new technology": it adds something to webforms
+  which changes the way we think about forms.  Traditionally, there
+  is only one kind of user data: data which matches the current form.
+  This plugin changes this: the user data is in transition towards the
+  expectations of the latest form.  People will need to get used to this
+  extra visual help.</p>
+
+  <h2 name="ratio">Rationale</h2>
 
   <p>Immediately after a form gets implemented, it enters the
   "maintenance" phase: every once-in-a-while, the form needs to get
@@ -38,28 +48,20 @@
   communicate them clearly to a user?  This based on the knowledge: when
   did the user visit the form last?</p>
 
-  <h3>Compatibility</h3>
+  <h2 name="recording">Recording changes</h2>
 
-  <p>This page demonstrates the features of this module, tested with
-  Bootstrap 5.3.8 and jQuery 3.7.1.  Very probably, this doe will also
-  work with older or newer releases of Bootstrap and Bootstrap: please
-  report your successes.</p>
-
-  <h3>Future developments</h3>
-
-  <ul>
-  <li>integration with the validation component.</li>
-  <li>porting the features to other web frameworks.</li>
-  </ul>
-
-  <h2>Concepts</h2>
+  <p>The key idea behind this plugin, is that the form developer records
+  the changes which were made to the form fields.  Based on the knowledge
+  about the last visit of the user to the form page, this plugin translate
+  the change records into minimal visual hints for that user.  With these
+  hints, the user can better adapt the submitted data than without help.</p>
 
   <p>The form change record is added to the HTML in divs.  What has changed
   and when is encoded in class attributes and data attributes.  When the form
   is loaded, it is informed about the version of the form when the user clicked
   "Save" last.  All the form changes since that moment will get visualized.</p>
 
-  <h3 name="version">Form and data version</h3>
+  <h2 name="version">Form and data version</h2>
 
   <p>To be able to see the changes, you need to track the version of the form
   which the user filled-in.  This is not the version of the form on the moment
@@ -78,6 +80,13 @@
 
   <p>Translate this to your own server language and web-framework.  (I will include
   your solutions as examples, if you contribute them.)</p>
+
+  <h2 name="future">Future developments</h2>
+
+  <ul>
+  <li>porting the features to other web frameworks than Bootstrap5.</li>
+  <li>create a better website.</li>
+  </ul>
 
 </body>
 </html>
