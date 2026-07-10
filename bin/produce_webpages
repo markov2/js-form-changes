@@ -34,7 +34,7 @@ sub _expand_fragment($)
 			 . encode_entities($text)
 			 . '</code></pre>';
 	}
-	elsif($frag =~ /(.*)\.(pill|dot)\.form$/)
+	elsif($frag =~ /(.*)\.(none|pill|dot)\.form$/)
 	{	return qq{<form action="#" id="$1-$2" class="demo demo-$2">\n}
              . qq{  <input type="hidden" id="form-version" name="version" value="20260616">\n}
          	 . qq{  <input type="hidden" id="data-version" value="20240101">\n}

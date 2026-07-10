@@ -1,0 +1,8 @@
+
+===== version history of form-changes
+
+This ChangeLog only contains changes made to the main concept
+and main documentation.  Each client implementation has its
+own ChangeLog.
+
+  * dist/bootstrap5/ChangeLog

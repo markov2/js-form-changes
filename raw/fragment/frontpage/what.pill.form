@@ -1,0 +1,24 @@
+<div>
+    <div>
+      <label for="name" class="form-label">Your name</label>
+      <input type="text" class="form-control" id="name" value="Betty" required aria-describedby="name-descr" />
+    </div>
+    <div>
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" required
+         aria-describedby="email-descr" />
+      <div class="change change-new" for="email"
+          data-changed-in="20251010"
+          data-summary="mailing">
+        Fill-in your email address to receive our monthly mailing with stories about rare animals.
+      </div>
+    </div>
+    <div>
+      <label for="animal" class="form-label">Favorit animal</label>
+      <input type="text" class="form-control" id="animal"
+         aria-describedby="animal-descr" />
+      <div id="animal-descr" class="form-text">
+        Specify the endangered spieces you want to support.
+      </div>
+    </div>
+</div>

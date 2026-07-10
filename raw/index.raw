@@ -6,6 +6,16 @@
 
 #fragment/standard_head.html
 
+  <link rel="stylesheet" href="dist/bootstrap5/1.0.0/form-changes.css" />
+
+  <script src="dist/bootstrap5/1.0.0/form-changes.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        $("FORM.demo-pill").changes({style: 'pill'});
+    });
+  </script>
+
 </head>
 <body>
 
@@ -21,9 +31,25 @@
   This plugin is "new technology": it adds something to webforms
   which changes the way we think about forms.  Traditionally, there
   is only one kind of user data: data which matches the current form.
-  This plugin changes this: the user data is in transition towards the
+  This plugin alters this: the user data is in transition towards the
   expectations of the latest form.  People will need to get used to this
   extra visual help.</p>
+
+<div class="row demo-compare">
+  <div class="col-6">
+    <center>What has changed?</center>
+#fragment/frontpage/what.none.form
+  </div>
+  <div class="col-6">
+    <center>What has changed?</center>
+#fragment/frontpage/what.pill.form
+  </div>
+</div>
+
+  <p>Only when the user did not visit this form after the "email address"-field
+  got added, then this special mark gets shown.  Otherwise, it will stay hidden.
+  Have a look at the <a href="bootstrap5.html">Bootstrap</a> page for more
+  examples.</p>
 
   <h2><a name="ratio">Rationale</a></h2>
 
@@ -51,10 +77,11 @@
   <h2><a name="recording">Recording changes</a></h2>
 
   <p>The key idea behind this plugin, is that the form developer records
-  the changes which were made to the form fields.  Based on the knowledge
-  about the last visit of the user to the form page, this plugin translate
-  the change records into minimal visual hints for that user.  With these
-  hints, the user can better adapt the submitted data than without help.</p>
+  the changes which were made to the form.  Based on the knowledge of the
+  last visit of the user to that form page, this plugin translates those
+  change records into minimal visual hints to that user.  With these
+  hints, the user can better adapt the submitted information than
+  without help.</p>
 
   <p>The form change record is added to the HTML in divs.  What has changed
   and when is encoded in class attributes and data attributes.  When the form
@@ -87,6 +114,14 @@
   <li>porting the features to other web frameworks than Bootstrap5.</li>
   <li>create a better website.</li>
   </ul>
+
+  <h2><a name="license">License and Contact</a></h2>
+
+  <p>The code is licensed MIT, the docs CC&nbsp;BY&nbsp;3.0.<br>
+  You can find the <a href="https://github.com/markov2/js-form-changes">repository on GitHub</a>.<br>
+  Please contact the author <a href="mailto:mark@overmeer.net">Mark Overmeer</a>
+  when anything is unclear, with new ideas, or code contributions.<br>
+  Financial contributions to support development and maintenance are welcomed.</p>
 
 </body>
 </html>
