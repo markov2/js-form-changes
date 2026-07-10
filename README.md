@@ -33,9 +33,8 @@ in interplay with the browser's validation framework.
 
 Please help me port this plugin to other front-ends.
 
-## Visual representation
+## License
 
-  * "Andriod style" orange dot (configurable)
+Code: MIT; Docs CC BY 3.0
 
-  * badges
 
