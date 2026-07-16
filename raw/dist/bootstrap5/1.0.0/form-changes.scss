@@ -1,0 +1,121 @@
+/* Style form-changes */
+/* Version 1.0.0      */
+
+FORM.changes {
+
+	//
+	// Genertic to all created markings
+	//
+
+	.change {
+		display: none;
+	}
+
+	.change-fix {
+		background-color: red;
+		color: white;
+	}
+
+	.change-accept {
+		background-color: green;
+	}
+
+	.change-mark {
+		z-index: 1;  /* always on top */
+	}
+
+	//
+	// change-notes
+	//
+
+	// the notes with a box around them.
+	FIELDSET.framed {
+		border: 2px solid black;
+		border-color: black;
+		border-radius: 5px;
+		margin: 2rem auto;
+		padding: 2rem;
+		position: relative;
+		width: 90%;
+
+		LEGEND {
+			border-color: black;
+			border-radius: 1ex;
+			font-size: 1rem;
+			height: 2em;
+			left: 10px;
+			position: absolute;
+			top: -1.1em;
+			width: auto;
+			line-height: 2em;
+		}
+	}
+
+	// any note, even without box
+	FIELDSET {
+		&.change-success { border-color: var(--bs-success); }
+		&.change-success LEGEND { background-color: var(--bs-success); }
+
+		&.change-danger  { border-color: var(--bs-danger); }
+		&.change-danger  LEGEND { background-color: var(--bs-danger); }
+
+		&.change-warning { border-color: var(--bs-warning); }
+		&.change-warning LEGEND { background-color: var(--bs-warning); }
+
+		&.change-info    { border-color: var(--bs-info); }
+		&.change-info    LEGEND { background-color: var(--bs-info); }
+
+		LEGEND {
+			padding: 0 10px;
+		}
+
+		.change-close {
+			float: right;
+		}
+	}
+
+	//
+	// Markings of all comment blocks beside the notes.
+	//
+
+	.change-new, .change-req, .change-sel, .change-cb, .change-rb {
+		border-left: 3px double green;
+		margin-left: 2rem;
+		padding-left: 1rem;
+	}
+
+	// Pill shape, left-top of input field
+	// Translated from the Bootstrap 5.3.8 badge pill example
+
+	.style-pill {
+		top: 0 !important;
+		left: 0 !important;
+		transform: translate(-.5rem,-50%) !important;
+		position: absolute !important;
+		display: inline-block;
+		padding: 0.35em 0.65em;
+		font-size: 0.75em;
+		font-weight: 700;
+		line-height: 1;
+		color: #fff;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: baseline;
+		border-radius: var(--bs-border-radius);
+	}
+	
+	// Translated from the Bootstrap 5.3.8 badge circle example
+	.style-dot {
+		top: 0 !important;
+		left: 0 !important;
+		transform: translate(-50%,-50%) !important;
+		position: absolute !important;
+		border-width: var(--bs-border-width) !important;
+		border-style: var(--bs-border-style) !important;
+		--bs-border-opacity: 1;
+		border-color: rgba(var(--bs-light-rgb),var(--bs-border-opacity)) !important;
+		border-radius: 50% !important;
+		padding: .5rem !important;
+	}
+
+}
