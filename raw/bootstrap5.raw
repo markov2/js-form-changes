@@ -29,12 +29,10 @@
   will also work with older or newer releases of Bootstrap and jQuery:
   please report your successes.</p>
 
-  <p>Future developments:</p>
   <ul>
-  <li>integration with Bootstraps Validation component.</li>
-  <li>support for SELECT MULTIPLE.</li>
-  <li><tt>rtl</tt> pills and dots.</li>
-  <li>dark mode.</li>
+  <li>Current version: 1.0.0.  Download from <a href="dist/bootstrap5/1.0.0">our website</a>.
+  <li><a href="https://github.com/markov2/js-form-changes/">Sources on github</a>.
+      Mind the <a href="https://github.com/markov2/js-form-changes/issues">issues</a>.</li>
   </ul>
 
   <h2><a name="plugin">Starting the "form-changes" plugin</a></h2>
